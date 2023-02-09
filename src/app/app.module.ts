@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TerminalComponent } from './terminal/terminal.component';
 import { ShowTerminalComponent } from './terminal/components/show-terminal/show-terminal.component';
 import { AddTerminalComponent } from './terminal/components/add-terminal/add-terminal.component';
+import { PurchasingComponent } from './purchasing/purchasing.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddTerminalComponent } from './terminal/components/add-terminal/add-ter
     ListApplicatorItemComponent,
     TerminalComponent,
     ShowTerminalComponent,
-    AddTerminalComponent
+    AddTerminalComponent,
+    PurchasingComponent
   ],
   imports: [
     HttpClientModule,
