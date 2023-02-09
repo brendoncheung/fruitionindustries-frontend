@@ -1,0 +1,15 @@
+export type Applicator = {
+    id: string,
+    description: string,
+    applicatorId: string,
+    manufacturer: string,
+    manufacturingNumber: string,
+    strokeLength: number,
+    type: string,
+    wireCrimpWidthMin: number,
+    wireCrimpWidthMax: number,
+    insulationDiaMin: number,
+    insulationDiaMax: number,
+    isLeased: boolean,
+    drawingUrl: string,
+}

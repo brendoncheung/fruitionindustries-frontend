@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-10">
+        <p>{{applicator.description}}</p>
+    </div>
+    <div class="col-2" *ngIf="applicator.isLeased">
+        <div class="row">
+            <label style="text-align: right;">Leased</label>
+        </div>
+        <div class="row">
+            <small style="text-align: right" class="form-text text-muted">01-01-2024</small>
+        </div>
+    </div>
+    
+    <div class="row">
+        <p>{{applicator.id}}</p>
+    </div>
+</div>
+
+
