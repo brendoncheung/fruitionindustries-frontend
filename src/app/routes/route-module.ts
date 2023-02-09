@@ -8,6 +8,9 @@ import { TerminalComponent } from "../terminal/terminal.component";
 import { ShowTerminalComponent } from "../terminal/components/show-terminal/show-terminal.component";
 import { AddTerminalComponent } from "../terminal/components/add-terminal/add-terminal.component";
 import { PurchasingComponent } from "../purchasing/purchasing.component";
+import { ShippingComponent } from "../shipping/shipping.component";
+import { AddPurchaseComponent } from "../purchasing/components/add-purchase/add-purchase.component";
+import { ShowPurchaseComponent } from "../purchasing/components/show-purchase/show-purchase.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -19,7 +22,11 @@ const appRoutes: Routes = [
         {path: 'show-terminal', component: ShowTerminalComponent},
         {path: 'add-terminal', component: AddTerminalComponent},
     ]},
-    {path: 'purchasing', component: PurchasingComponent}
+    {path: 'purchasing', component: PurchasingComponent, children: [
+        {path: 'add-purchase-request', component: AddPurchaseComponent},
+        {path: 'show-purchase-request', component: ShowPurchaseComponent},       
+    ]},
+    {path: 'shipping', component: ShippingComponent}
 ]
 
 @NgModule({

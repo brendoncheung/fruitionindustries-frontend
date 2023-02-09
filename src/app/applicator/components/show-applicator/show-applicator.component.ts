@@ -17,9 +17,4 @@ export class ShowApplicatorComponent implements OnInit {
   ngOnInit(): void {
     this.apps = this.repository.getApplicators();
   }
-
-  
-
-
-
 }

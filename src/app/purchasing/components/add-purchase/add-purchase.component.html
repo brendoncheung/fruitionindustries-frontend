@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-lg-12">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="isEmergency" ngModel>
+                    <label class="form-check-label text-danger fw-bolder fs-4">
+                      Emergency Buy
+                    </label>
+                    <br>
+                    <small class="form-text text-muted">This will float to the top of the priority list</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Description</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="description" 
+                    required
+                    ngModel>
+                    <small class="form-text text-muted">Write a small description on what the item is</small>
+                </div>
+
+                <div class="form-group">
+                  <label class="fw-bold">Quantity</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  name="quantity" 
+                  required
+                  ngModel>
+                  <small class="form-text text-muted">UOM - length = feet, weight = lbs</small>
+              </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Fruition Part Number</label>
+                    <input type="text" class="form-control" name="description" ngModel>
+                    <small class="form-text text-muted">Shortage</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">URL</label>
+                    <input type="text" class="form-control" name="drawingUrl" ngModel>
+                    <small class="form-text text-muted">Link to the item</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Manufacturer</label>
+                    <input type="text" class="form-control" name="manufacturer" ngModel>
+                    <small class="form-text text-muted">E.g. - TE, Molex, etc</small>
+                </div>
+        
+                <div class="form-group">
+                    <label class="fw-bold">Manufacturer Number</label>
+                    <input type="text" class="form-control" name="manufacturerNumber" ngModel>
+                    <small class="form-text text-muted">E.g. - For TE, 2151032</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Request Date</label>
+                    <input type="date" class="form-control">
+                    <small class="form-text text-muted">G-press = 30mm, K-press = 40mm</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="fw-bold">Catagory</label>
+                    <select class="form-control" name="style" ngModel>
+                      <option>Engineering</option>
+                      <option>Equipment</option>
+                      <option>Shortage</option>
+                      <option>Tooling</option>
+                      <option>Supply</option>
+                      <option>PPAP</option>
+                      <option>Misc</option>
+                    </select>
+                  </div>
+            <button class="btn btn-primary btn-block mt-2" type="submit">Submit</button>
+        </form>
+        <br>
+    </div>
+</div>

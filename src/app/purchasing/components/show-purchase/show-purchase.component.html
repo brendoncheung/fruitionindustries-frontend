@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor = "let request of requests" ripple>
+        <app-list-purchase-item
+        [request]="request">
+
+        </app-list-purchase-item>
+        
+    </li>
+</ul>
