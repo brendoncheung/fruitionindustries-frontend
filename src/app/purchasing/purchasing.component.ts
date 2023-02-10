@@ -13,7 +13,6 @@ export class PurchasingComponent {
   constructor(
     private router: Router, 
     private activatedRoute: ActivatedRoute,
-    private repository: PurchaseRequestRepository
     ) {}
 
   onCreatePurchaseRequestClicked() {
@@ -22,10 +21,6 @@ export class PurchasingComponent {
 
   onShowPurchaseRequestClicked() {
     this.router.navigate(['show-purchase-request'], {relativeTo: this.activatedRoute})
-  }
-
-  addRequest() {
-    this.repository.addRequest();
   }
 
 }

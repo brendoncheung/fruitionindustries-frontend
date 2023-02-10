@@ -1,4 +1,5 @@
 export type PurchaseRequest = {
+    url: string,
     isEmergency: boolean,
     quantity: number,
     description: string, 
@@ -8,4 +9,5 @@ export type PurchaseRequest = {
     requestDate: string,
     catagory: string,
     createdBy: {firstname: string, lastname: string},
+    isResolved: boolean
 }

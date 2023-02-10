@@ -10,34 +10,33 @@ export class PurchaseRequestRepository {
 
     constructor(private http: HttpClient) {}
 
-    requests: PurchaseRequest[] = [
-        {isEmergency: true, manufacturer: "TE", quantity: 12, description: "blah", frutionPn: "230222", createDate: Date.now().toString(), requestDate: Date.now().toString(), catagory: "Engineering", createdBy: {firstname: "brendoin", lastname: "Cheung"} },
-        {isEmergency: true, manufacturer: "TE", quantity: 12, description: "blah", frutionPn: "230222", createDate: Date.now().toString(), requestDate: Date.now().toString(), catagory: "Engineering", createdBy: {firstname: "brendoin", lastname: "Cheung"} },
-        {isEmergency: true, manufacturer: "TE", quantity: 12, description: "blah", frutionPn: "230222", createDate: Date.now().toString(), requestDate: Date.now().toString(), catagory: "Engineering", createdBy: {firstname: "brendoin", lastname: "Cheung"} },
-        {isEmergency: true, manufacturer: "TE", quantity: 12, description: "blah", frutionPn: "230222", createDate: Date.now().toString(), requestDate: Date.now().toString(), catagory: "Engineering", createdBy: {firstname: "brendoin", lastname: "Cheung"} },
-        {isEmergency: true, manufacturer: "TE", quantity: 12, description: "blah", frutionPn: "230222", createDate: Date.now().toString(), requestDate: Date.now().toString(), catagory: "Engineering", createdBy: {firstname: "brendoin", lastname: "Cheung"} },
-    ]
+    private baseUrl = 'http://localhost:3000/api/purchase/'
 
-    // Observable<[PurchaseRequest]>
-
-    public getRequests(): PurchaseRequest[] {
-        const results = this.http.get<[PurchaseRequest]>('http://localhost:3000/api/purchaserequests')
-        return this.requests
+    public getRequests(): Observable<[PurchaseRequest]> {
+        return this.http.get<[PurchaseRequest]>(this.baseUrl)
     }   
 
-    public getRequestById(id: number) {
-
+    public getRequestById(id: string): Observable<PurchaseRequest> {
+        return this.http.get<PurchaseRequest>(this.baseUrl + id)
     }
 
-    public addRequest() {
-        this.http.post(
-            'http://localhost:3000/api/purchase/add',
+    public addRequest(request: PurchaseRequest): Observable<PurchaseRequest> {
+        console.log(request.requestDate)
+        return this.http.post<PurchaseRequest>(
+            this.baseUrl,
             {
-                description: 'hello'
+                isEmergency: request.isEmergency,
+                quantity: request.quantity,
+                description: request.description,
+                manufacturer: request.manufacturer,
+                fruitionPn: request.frutionPn,
+                createDate: request.createDate,
+                requestDate: request.requestDate,
+                catagory: request.catagory,
+                createdBy: {firstname: "anon", lastname: 'anon'},
+                isResolved: request.isResolved,
             }
-        ).subscribe(data => {
-            console.log("newly create request: " + data)
-        })
+        )
     }
 
 

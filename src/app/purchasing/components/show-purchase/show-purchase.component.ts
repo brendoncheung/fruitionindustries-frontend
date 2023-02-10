@@ -14,7 +14,11 @@ export class ShowPurchaseComponent implements OnInit {
   constructor(private repository: PurchaseRequestRepository) {}
 
   ngOnInit(): void {
-      this.requests = this.repository.getRequests()
+      const results = this.repository.getRequests()
+      results.subscribe((results) => {
+        console.log("the result is" + results)
+        this.requests = results;
+      })
   }
 
 }

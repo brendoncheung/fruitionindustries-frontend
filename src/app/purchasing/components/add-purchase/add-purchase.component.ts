@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PurchaseRequestRepository } from '../../services/purchase-request-repository';
 
 
 @Component({
@@ -8,9 +9,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-purchase.component.css']
 })
 export class AddPurchaseComponent {
+
+  constructor(private repository: PurchaseRequestRepository) {}
   
   onSubmit(form: NgForm) {
-    console.log(form)
+    this.repository.addRequest(form.value).subscribe((result) => {
+      console.log("uploaded this: " + result)
+    })
   }
 
 }
