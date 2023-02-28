@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatNativeDateModule } from '@angular/material/core'
+import { MatTableModule } from '@angular/material/table'
 
 
 import { AppComponent } from './app.component';
@@ -26,8 +27,11 @@ import { PurchasingComponent } from './purchasing/purchasing.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { AddPurchaseComponent } from './purchasing/components/add-purchase/add-purchase.component';
 import { PurchaseRequestRepository } from './purchasing/services/purchase-request-repository';
-import { ListPurchaseItemComponent } from './purchasing/components/list-purchase-item/list-purchase-item.component';
 import { ShowPurchaseComponent } from './purchasing/components/show-purchase/show-purchase.component';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { FullfilPurchaseModalComponent } from './purchasing/components/fullfil-purchase-modal/fullfil-purchase-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ArchivePurchaseComponent } from './purchasing/components/archive-purchase/archive-purchase.component';
 
 @NgModule({
   declarations: [
@@ -44,24 +48,34 @@ import { ShowPurchaseComponent } from './purchasing/components/show-purchase/sho
     PurchasingComponent,
     ShippingComponent,
     AddPurchaseComponent,
-    ListPurchaseItemComponent,
-    ShowPurchaseComponent
+    ShowPurchaseComponent,
+    FullfilPurchaseModalComponent,
+    ArchivePurchaseComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    LoggerModule.forRoot({
+      serverLoggingUrl: "",
+      level: NgxLoggerLevel.DEBUG,
+      serverLogLevel: NgxLoggerLevel.ERROR
+    }),
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2500
+    }),
     MatDatepickerModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [
     ApplicatorRepository,
     ApplicatorPCMRPDatastore,
-    PurchaseRequestRepository
+    PurchaseRequestRepository,
   ],
   bootstrap: [AppComponent]
 })

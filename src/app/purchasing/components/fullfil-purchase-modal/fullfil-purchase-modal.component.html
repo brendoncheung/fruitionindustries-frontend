@@ -1,0 +1,16 @@
+
+
+<div class="form-group">
+    <p class="h4">Fulfill</p>
+    <div class="form-group">
+        <label for="name">PCMRP PO Number:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="poNumber">
+      </div>
+
+    <div class="btn-group">
+        <button btn btn-primary (click)="onCancelButtonClicked()">Cancel</button>
+        <button btn btn-primary (click)="onConfirmButtonClicked()">Fulfill</button>
+      </div>
+
+
+</div>

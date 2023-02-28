@@ -1,10 +1,13 @@
 export type PurchaseRequest = {
+    _id: string,
     url: string,
+    poNumber: string
     isEmergency: boolean,
     quantity: number,
     description: string, 
     manufacturer: string,
-    frutionPn: string,
+    manufacturerNumber: string,
+    fruitionPn: string,
     createDate: string,
     requestDate: string,
     catagory: string,

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { PurchaseRequest } from "../model/purchase.request";
-import { Injectable } from "@angular/core";
+import { Injectable, isDevMode } from "@angular/core";
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -8,28 +8,52 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable()
 export class PurchaseRequestRepository {
 
-    constructor(private http: HttpClient) {}
+    private host = '';
+    private port = '';
+    private baseUrl = '';
 
-    private baseUrl = 'http://localhost:3000/api/purchase/'
+    constructor(private http: HttpClient) {
+        console.log("isDevMode: ", isDevMode())
+        this.host = isDevMode() ? "localhost" : ''
+        this.port = isDevMode() ? '3000' : ''
+        this.baseUrl = `http://${this.host}:${this.port}/api/purchase/`
+    }
 
     public getRequests(): Observable<[PurchaseRequest]> {
         return this.http.get<[PurchaseRequest]>(this.baseUrl)
     }   
 
+    public getArchivedRequests(): Observable<[PurchaseRequest]> {
+        return this.http.get<[PurchaseRequest]>(this.baseUrl, {params: {archive: true}})
+    }
+
+    public deleteRequest(request: PurchaseRequest) {
+        const url = `${this.baseUrl}/${request._id}`
+        return this.http.delete<PurchaseRequest>(url)
+    }
+
+    public fulfillRequest(requestId: string, poNumber: string) {
+        const url = `${this.baseUrl}${requestId}`
+        return this.http.put<PurchaseRequest>(url, {id: requestId, poNumber: poNumber}, {observe: 'response'});
+    }
+
     public getRequestById(id: string): Observable<PurchaseRequest> {
-        return this.http.get<PurchaseRequest>(this.baseUrl + id)
+        const url = `${this.baseUrl}/${id}`
+        return this.http.get<PurchaseRequest>(url)
     }
 
     public addRequest(request: PurchaseRequest): Observable<PurchaseRequest> {
-        console.log(request.requestDate)
+        console.log(this.baseUrl)
         return this.http.post<PurchaseRequest>(
             this.baseUrl,
             {
+                url: request.url,
                 isEmergency: request.isEmergency,
                 quantity: request.quantity,
                 description: request.description,
                 manufacturer: request.manufacturer,
-                fruitionPn: request.frutionPn,
+                manufacturerNumber: request.manufacturerNumber,
+                fruitionPn: request.fruitionPn,
                 createDate: request.createDate,
                 requestDate: request.requestDate,
                 catagory: request.catagory,
@@ -38,7 +62,4 @@ export class PurchaseRequestRepository {
             }
         )
     }
-
-
-
 }

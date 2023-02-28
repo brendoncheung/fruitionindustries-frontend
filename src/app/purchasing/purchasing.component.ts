@@ -1,6 +1,5 @@
 import { Component, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PurchaseRequestRepository } from './services/purchase-request-repository';
 
 @Component({
   selector: 'app-purchasing',
@@ -23,4 +22,7 @@ export class PurchasingComponent {
     this.router.navigate(['show-purchase-request'], {relativeTo: this.activatedRoute})
   }
 
+  onArchivePurchaseRequestClicked() {
+    this.router.navigate(['archive-purchase-request'], {relativeTo: this.activatedRoute})
+  }
 }

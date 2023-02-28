@@ -11,6 +11,7 @@ import { PurchasingComponent } from "../purchasing/purchasing.component";
 import { ShippingComponent } from "../shipping/shipping.component";
 import { AddPurchaseComponent } from "../purchasing/components/add-purchase/add-purchase.component";
 import { ShowPurchaseComponent } from "../purchasing/components/show-purchase/show-purchase.component";
+import { ArchivePurchaseComponent } from "../purchasing/components/archive-purchase/archive-purchase.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     ]},
     {path: 'purchasing', component: PurchasingComponent, children: [
         {path: 'add-purchase-request', component: AddPurchaseComponent},
-        {path: 'show-purchase-request', component: ShowPurchaseComponent},       
+        {path: 'show-purchase-request', component: ShowPurchaseComponent},
+        {path: 'archive-purchase-request', component: ArchivePurchaseComponent}
     ]},
     {path: 'shipping', component: ShippingComponent}
 ]
