@@ -1,0 +1,30 @@
+<div class="btn-group">
+    <button 
+    class="btn btn-success me-2" 
+    (click)="onAddApplicatorButtonClicked()">
+        <i class="bi bi-plus"></i> Add Applicator
+    </button>
+
+    <button 
+    class="btn btn-success me-2" 
+    (click)="onAddTerminalButtonClicked()">
+        <i class="bi bi-plus"></i> Add Terminal
+    </button>
+    
+    <button 
+    class="btn btn-primary me-2" 
+    (click)="onShowApplicatorButtonClicked()">View Applicators</button>
+    
+    <button 
+    class="btn btn-primary me-2" 
+    (click)="onShowTerminalButtonClicked()">View Terminals</button>
+
+    <button 
+    class="btn btn-primary" 
+    (click)="onToolingSearchButtonClicked()">Search for tooling</button>
+    
+</div>
+<hr>
+<router-outlet></router-outlet>
+
+

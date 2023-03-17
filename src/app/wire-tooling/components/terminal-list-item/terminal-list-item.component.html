@@ -1,0 +1,38 @@
+<div class="list-group-item">
+    <div class="row">
+      <div class="column-4">
+        <label class="me-1" [ngStyle]="{'font-size':'20px', 'font-weight':'bold'}">{{terminal.fruitionNumber}}</label>
+        <button class="badge badge-pill badge-primary me-1" 
+        *ngFor="let applicator of terminal.applicators" (click)="onApplicatorButtonClicked(applicator, attachApplicatorContent)">APP-{{applicator.fruitionAppId}} | {{applicator.manufacturerNumber}}</button>
+        <br>  
+        <small class="form-text text-muted">{{terminal.description}}</small>
+      </div>
+      <div class="column">
+        <p>{{terminal.manufacturerNumber}}</p>
+      </div>
+  
+      <div class="btn-group">
+        <button class="btn-primary me-2" (click)="onAttachApplicationButtonClicked()">Attach Applicator</button>
+        <button class="btn-primary me-2" (click)="onSeeTerminalSpecButtonClicked()">Terminal Specification</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal for showing applicator information-->
+  <ng-template #attachApplicatorContent let-modalData>
+     <div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Applicator: {{selectedApplicator.fruitionAppId}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modalData.dismiss()"></button>
+	</div>
+	<div class="modal-body">
+			<div class="mb-3">
+				<p> <strong>Description:</strong> {{selectedApplicator.description}}</p>
+				<p> <strong>Manufacturer Number: </strong> {{selectedApplicator.manufacturerNumber}}</p>
+				<p> <strong>Manufacturer: </strong>{{selectedApplicator.manufacturer}}</p>
+			</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" (click)="onApplicatorButton_DeleteButtonClicked()">Delete</button>
+		<button type="button" class="btn btn-secondary" (click)="modalData.close()">Close</button>
+	</div>
+_  </ng-template>

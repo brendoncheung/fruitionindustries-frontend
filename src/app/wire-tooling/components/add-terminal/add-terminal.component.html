@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-lg-12">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" name="description" ngModel>
+                    <small class="form-text text-muted">Aptiv 12124587 Weather-Pack Loose Male Terminal, 12 Ga., Tin Plated</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Fruition Number</label>
+                    <input type="text" class="form-control" name="fruitionNumber" ngModel>
+                    <small class="form-text text-muted">Terminals in PCMRP are prefixed by 23xxxx</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Manufacturer</label>
+                    <input type="text" class="form-control" name="manufacturer" ngModel>
+                    <small class="form-text text-muted">TE, Molex, Aptiv, JST, the list goes on...</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Manufacturer Number</label>
+                    <input type="text" class="form-control" name="manufacturerNumber" ngModel>
+                    <small class="form-text text-muted">Not the distributor's number</small>
+                </div>
+        
+                <div class="form-group">
+                    <label>Strip Length Min</label>
+                    <input type="text" class="form-control" name="stripLengthMin" ngModel>
+                    <small class="form-text text-muted">In mm</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Strip Length Max</label>
+                    <input class="form-control" name="stripLengthMax" ngModel>
+                    <small class="form-text text-muted">In mm</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Image URL</label>
+                    <input class="form-control" name="imgUrl" ngModel>
+                    <small class="form-text text-muted">Right click on the image and copy image address</small>                      
+                  </div>
+
+                <div class="form-group">
+                    <label>Conductor crimp Dial</label>
+                    <input type="text" class="form-control" name="conductorCrimpDial" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Insulation crimp Dial</label>
+                    <input type="text" class="form-control" name="insulationCrimpDial" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Rated Voltage Min</label>
+                    <input type="text" class="form-control" name="ratedVoltageMin" ngModel>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rated Voltage Max</label>
+                    <input type="text" class="form-control" name="ratedVoltageMax" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Rated Current Min</label>
+                    <input type="text" class="form-control" name="ratedCurrentMin" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Rated Current Max</label>
+                    <input type="text" class="form-control" name="ratedCurrentMax" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Rated Temperature Min</label>
+                    <input type="text" class="form-control" name="ratedTempMin" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Rated Temperature Max</label>
+                    <input type="text" class="form-control" name="ratedTempMax" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Base Material</label>
+                    <input type="text" class="form-control" name="baseMaterial" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Plate Material</label>
+                    <input type="text" class="form-control" name="plateMaterial" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label>Insulation Material</label>
+                    <input type="text" class="form-control" name="insulationMaterial" ngModel>
+                </div>
+
+            <button class="btn btn-primary btn-block mt-2" type="submit">Submit</button>
+
+        </form>
+        <br>
+    </div>
+</div>

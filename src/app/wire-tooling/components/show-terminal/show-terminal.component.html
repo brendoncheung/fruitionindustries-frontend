@@ -1,0 +1,80 @@
+<div class="list-group"
+*ngFor="let terminal of terminals">
+
+<app-terminal-list-item
+[terminal]="terminal"
+(deleteApplicatorEvent)="deleteApplicatorCallback(terminal, $event)"
+(attachApplicatorEvent)="attachedApplicatorCallback(terminal, attachApplicatorContent)"
+(seeTerminalSpecEvent)="seeTerminalSpecCallback(terminal, seeTerminalSpecContent)"
+>
+</app-terminal-list-item>
+</div>
+
+<!-- modal for attaching applicator -->
+<ng-template #attachApplicatorContent let-modal>
+    <div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Attach applicator</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+			<div class="mb-3">
+				<label for="dateOfBirth">Select from list of applicator</label>
+				<div class="input-group">
+					<select [(ngModel)]="selectedApplicator" name="selectedApplicator">
+                        <option *ngFor= "let applicator of applicators" [ngValue]="applicator">App - {{applicator.fruitionAppId}} | {{applicator.manufacturerNumber}}</option>
+                    </select>
+				</div>
+			</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close(selectedApplicator)">Attach</button>
+	</div>
+</ng-template>
+
+<!-- modal for seeing terminal specs -->
+<ng-template #seeTerminalSpecContent let-modal>
+    <div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Terminal Crimp Specification for {{selectedTerminal.fruitionNumber}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+
+		<form class="form-group ms-2 me-2" [formGroup]="specificationForm">
+			<ng-container formArrayName="specs"> 
+				<ng-container *ngFor="let specRow of specs.controls; let i = index">
+					<div [formGroupName]="i">
+
+						<div class="form-group">
+							<label>Gauge: </label>
+							<input class="form-control" formGroupName="gauge"> <br>
+						</div>
+
+						<div class="form-group">
+							<label >Crimp Height (Min): </label> 
+							<input class="form-control" formGroupName="crimpHeightMin"><br>
+						</div>
+
+						<div class="form-group">
+							<label>Crimp Height (Max):: </label>
+							<input class="form-control" formGroupName="crimpHeightMax"><br>
+						</div>
+
+						<div class="form-group">
+							<label>Insulation Height (Min):: </label>
+							<input class="form-control" formGroupName="crimpHeightMin"><br>
+						</div>
+
+						<div class="form-group">
+							<label>Insulation Height (Max):: </label>
+							<input class="form-control" formGroupName="crimpHeightMax"><br>
+						</div>
+					</div>
+				</ng-container>
+
+			</ng-container>
+		</form>
+
+	<div class="modal-footer">
+		<button class="btn btn-success" (click)="addNewTerminalSpecification()"> <i class="bi bi-plus"> Add New Specification</i> </button>
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close(selectedApplicator)">Finish</button>
+	</div>
+</ng-template>

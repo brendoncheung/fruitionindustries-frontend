@@ -1,0 +1,11 @@
+<div class="list-group"
+*ngFor="let applicator of applicators">
+
+<app-applicator-list-item 
+
+[applicator]="applicator"
+(deleteApplicatorEvent)="deleteApplicatorCallback($event)">
+
+</app-applicator-list-item>
+
+</div>

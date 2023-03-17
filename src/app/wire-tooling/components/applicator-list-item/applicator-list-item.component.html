@@ -1,0 +1,20 @@
+<div class="list-group-item">
+  <div class="row">
+    <div class="column-4">
+      <label [ngStyle]="{'font-size':'20px', 'font-weight':'bold'}">App - {{applicator.fruitionAppId}}</label>
+      <br>  
+      <a href="applicator.drawingUrl">
+        <small class="form-text text-muted">{{applicator.manufacturerNumber}} - {{applicator.type}} - {{applicator.strokeLength}}mm stoke length</small>
+      </a>
+      
+    </div>
+    <div class="column">
+      <p>{{applicator.description}}</p>
+    </div>
+
+    <div class="column btn-group">
+      <button class="btn-primary">Add Terminal</button>
+      <button class="btn-primary" (click)="onDeleteApplicatorButtonClicked()">Delete Applicator</button>
+    </div>
+  </div>
+</div>
